@@ -1,0 +1,71 @@
+
+
+# install c++ gcc g++ ...
+
+	sudo apt install build-essential
+
+# install swig
+
+	sudo apt-get install swig
+
+# shared library _arra.so
+	sudo apt-get install python3.10-dev
+	swig -python -c++ arra.i
+	gcc -fPIC -c arra.cpp arra_wrap.cxx -I/usr/include/python3.9/
+	c++ -shared arra.o arra_wrap.o -o _arra.so
+
+# install python 3.9 and dev
+	sudo apt install python3.9-dev
+
+# install PyQt5 and qt designer 
+	sudo apt-get install python3-pyqt5
+	sudo apt-get install pyqt5-dev-tools
+	sudo apt-get install qttools5-dev-tools
+
+# convert file.ui to a python file
+	pyuic5 -x calculator.ui -o calc.py
+
+# install pycharm
+	! download pycharm-community and extract it here 
+	cd pycharm-community/bin
+	./pycharm.sh
+
+# install anaconda 
+	# Prerequisites
+	sudo apt-get install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
+	# download anaconda python 3.9
+	https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
+	bash ~/Downloads/Anaconda3-2021.11-Linux-x86_64.sh
+	yes
+	yes
+	source .bashrc
+	#uninstall anaconda
+	rm -rf ~/anaconda3
+
+# crearte enveronment 
+	
+	sudo apt install python3.9-dev
+	conda create -n ama python=3.9
+	conda activate ama
+	conda install numpy
+	conda install -c conda-forge cartopy
+	conda install matplotlib
+	conda install pandas
+
+
+
+#install hysplit linux
+	1) gnu compiler (gfortran and gcc)
+	2) libm
+	3) libc
+	sudo apt-get update
+	sudo apt-get install netcdf-bin
+	sudo apt-get install libeccodes0
+	
+# Generate traj_auto:
+	sudo apt-get install expect
+	pip install wget
+	
+	
+
+
