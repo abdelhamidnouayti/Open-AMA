@@ -17,7 +17,7 @@ set out_file [lindex $argv 14];
 
 set timeout -1
 
-spawn ~/PhD/hysplit.v5.1.0_UbuntuOS20.04.2LTS/exec/hyts_std
+spawn "$path_exec\n"
 
 expect "           0           0           0           0"
 send -- "$year $month $day $hour\n"
