@@ -17,7 +17,7 @@ set out_file [lindex $argv 14];
 
 set timeout -1
 
-spawn "$path_exec\n"
+spawn $path_exec
 
 expect "           0           0           0           0"
 send -- "$year $month $day $hour\n"
