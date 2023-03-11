@@ -1206,11 +1206,11 @@ class Mainwindow(QtWidgets.QMainWindow):
 
     def date_format(self,date):
         if (date == "begin"):
-            _prog.get_index_data_headers(self.cBox_date_begin.currentText(), "date_begin")
+            _ama.get_index_data_headers(self.cBox_date_begin.currentText(), "date_begin")
             print("<<<<<<<<<<<<<<<<<<<<<<")
             self.start_threading("date_format", "begin", self.cBox_date_format_begin.currentText())
         elif (date == "end"):
-            _prog.get_index_data_headers(self.cBox_date_end.currentText(), "date_end")
+            _ama.get_index_data_headers(self.cBox_date_end.currentText(), "date_end")
             self.start_threading("date_format", "end", self.cBox_date_format_end.currentText())
         
     
@@ -1438,12 +1438,12 @@ class Mainwindow(QtWidgets.QMainWindow):
 
     def clustering(self, function):
         if function == "kmean":
-            _prog.clustering_kmean(int(self.sBox_ncl_initial_kmean.value()), int(self.sBox_nth_kmean.value()),
+            _ama.clustering_kmean(int(self.sBox_ncl_initial_kmean.value()), int(self.sBox_nth_kmean.value()),
                                    int(self.sBox_skip_kmean.value()), int(self.sBox_repetition_clustering.value()))
             self.dir_clust_results()
             
         elif function == "TSV":
-            _prog.clustering_TSV(int(self.sBox_nth_tsv.value()), int(self.sBox_skip_tsv.value()))
+            _ama.clustering_TSV(int(self.sBox_nth_tsv.value()), int(self.sBox_skip_tsv.value()))
 
     def figure_size(self,function):
         if function == "kmean":
@@ -1454,19 +1454,19 @@ class Mainwindow(QtWidgets.QMainWindow):
     def choice_nbr_clusters(self, function):
         if function == "kmean":
             self.nbr_clusters_kmean = int(self.sBox_ncl_kmean.value())
-            _prog.choice_the_number_of_clusters(self.nbr_clusters_kmean,"kmean", self.dir_clustering)
+            _ama.choice_the_number_of_clusters(self.nbr_clusters_kmean,"kmean", self.dir_clustering)
         elif function == "TSV":
             self.nbr_clusters_tsv = int(self.sBox_ncl_tsv.value())
-            _prog.choice_the_number_of_clusters(self.nbr_clusters_tsv, "TSV", "")
+            _ama.choice_the_number_of_clusters(self.nbr_clusters_tsv, "TSV", "")
 
     def frequency(self,  figure, canvas, function):
         if function == "kmean":
-            _prog.clusters_monthly_frequency("kmean", self.dir_clustering)
+            _ama.clusters_monthly_frequency("kmean", self.dir_clustering)
             self.freq_file = pd.read_table(self.dir_clustering + "/clusters_monthly_frequency_kmean.csv", sep=";")
             nbr_clust = self.nbr_clusters_kmean
 
         elif function == "TSV":
-            _prog.clusters_monthly_frequency("TSV", "")
+            _ama.clusters_monthly_frequency("TSV", "")
             self.freq_file = pd.read_table("../Results/Cluster/clusters_monthly_frequency_tsv.csv", sep=";")
             nbr_clust = self.nbr_clusters_tsv
         self.ss = np.sum(self.freq_file.iloc[:,1:], axis = 1)
@@ -1487,11 +1487,11 @@ class Mainwindow(QtWidgets.QMainWindow):
 
     def rose_plot(self, figure, canvas, function):
         if function == "kmean":
-            ctr_name = _prog.extract_clusters_roseplot_file("kmean", self.dir_clustering)
+            ctr_name = _ama.extract_clusters_roseplot_file("kmean", self.dir_clustering)
             self.rose_file = pd.read_table(self.dir_clustering + "/roseplot_file_"+ ctr_name +"_kmean.csv", sep=";")
             nbr_clust = self.nbr_clusters_kmean
         elif function == "TSV":
-            ctr_name = _prog.extract_clusters_roseplot_file("TSV", "")
+            ctr_name = _ama.extract_clusters_roseplot_file("TSV", "")
             self.rose_file = pd.read_table("../Results/Cluster/roseplot_file_"+ ctr_name +"_tsv.csv", sep=";")
             nbr_clust = self.nbr_clusters_tsv
 
@@ -1545,10 +1545,10 @@ class Mainwindow(QtWidgets.QMainWindow):
 
     def plot_var_TSV(self, figure, canvas, function):
         if (function =="kmean"):
-            _prog.variation_TSV("kmean", self.dir_clustering)  
+            _ama.variation_TSV("kmean", self.dir_clustering)  
             self.var_tsv_file = pd.read_table(self.dir_clustering + "/variation_TSV_kmean.csv", sep=";")
         elif (function =="TSV"):
-            _prog.variation_TSV("TSV", "")
+            _ama.variation_TSV("TSV", "")
             self.var_tsv_file = pd.read_table("../Results/Cluster/variation_TSV_tsv.csv", sep=";")
         self.nbr_clst = self.var_tsv_file['n_clusters']
         self.tsv = self.var_tsv_file['tsv']
