@@ -8,7 +8,7 @@ import random
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5 import uic	# upload file.ui
 # =======================================================
-import _prog			# C++ shared library
+import _ama			# C++ shared library
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import matplotlib.colors as mplc
@@ -56,21 +56,21 @@ class OutputGrabber(QtCore.QThread):
         self.starting()
         if self.fonction == "read_traj":
             try:
-                _prog.read_trajectories(self.para1)   # Call your code here
+                _ama.read_trajectories(self.para1)   # Call your code here
             except Exception as e:
                 self.mysignal.emit(str(e))
         elif self.fonction == "clear_traj":
             try:
-                _prog.clear_trajs()
+                _ama.clear_trajs()
             except Exception as e:
                 self.mysignal.emit(str(e))
         elif self.fonction == "read_data":
             try:
                 if os.path.isfile("../Working/headers.txt"):
                     os.remove("../Working/headers.txt")
-                _prog.clear_data()
+                _ama.clear_data()
                 self.signal_header.emit("clear")
-                _prog.read_data(self.para1, "yes")
+                _ama.read_data(self.para1, "yes")
                 self.signal_header.emit("read")
             except Exception as e:
                 self.mysignal.emit(str(e))
@@ -78,78 +78,78 @@ class OutputGrabber(QtCore.QThread):
             try:
                 if os.path.isfile("../Working/headers.txt"):
                     os.remove("../Working/headers.txt")
-                _prog.clear_data()
+                _ama.clear_data()
                 self.signal_header.emit("clear")
             except Exception as e:
                 self.mysignal.emit(str(e))
         elif self.fonction == "date_format":
             try:
-                _prog.date_format(self.para1, self.para2)
+                _ama.date_format(self.para1, self.para2)
             except Exception as e:
                 self.mysignal.emit(str(e))
         elif self.fonction == "ctr_trajs":
             try:
-                _prog.ctr_trajs(float(self.para1))
+                _ama.ctr_trajs(float(self.para1))
             except Exception as e:
                 self.mysignal.emit(str(e))
         elif self.fonction == "select_traj":
             try:
-                _prog.select_trajs_ctr(float(self.para1), float(self.para2), self.para3)
+                _ama.select_trajs_ctr(float(self.para1), float(self.para2), self.para3)
             except Exception as e:
                 self.mysignal.emit(str(e))
         # ======================= CWT =========================
         elif self.fonction == "2D_CWT":
             try:
-                _prog.CWT(float(self.para1), float(self.para2), float(self.para3), float(self.para4), float(self.para5))
+                _ama.CWT(float(self.para1), float(self.para2), float(self.para3), float(self.para4), float(self.para5))
             except Exception as e:
                 self.mysignal.emit(str(e))
         elif self.fonction == "2D_WCWT":
             try:
-                _prog.WCWT(self.para1, self.para2, float(self.para3), float(self.para4), float(self.para5), self.para6)
+                _ama.WCWT(self.para1, self.para2, float(self.para3), float(self.para4), float(self.para5), self.para6)
             except Exception as e:
                 self.mysignal.emit(str(e))
         elif self.fonction == "3D_CWT":
             try:
-                _prog.CWT_3D(float(self.para1), float(self.para2), float(self.para3), float(self.para4), float(self.para5),
+                _ama.CWT_3D(float(self.para1), float(self.para2), float(self.para3), float(self.para4), float(self.para5),
                          self.para6)
             except Exception as e:
                 self.mysignal.emit(str(e))
         elif self.fonction == "3D_WCWT":
             try:
-                _prog.WCWT_3D(self.para1, self.para2, float(self.para3), float(self.para4), float(self.para5), self.para6)
+                _ama.WCWT_3D(self.para1, self.para2, float(self.para3), float(self.para4), float(self.para5), self.para6)
             except Exception as e:
                 self.mysignal.emit(str(e))
         # ===================== PSCF =========================
         elif self.fonction == "2D_PSCF":
             try:
-                _prog.PSCF(float(self.para1), float(self.para2), float(self.para3), float(self.para4), float(self.para5),
+                _ama.PSCF(float(self.para1), float(self.para2), float(self.para3), float(self.para4), float(self.para5),
                        float(self.para6))
             except Exception as e:
                 self.mysignal.emit(str(e))
         elif self.fonction == "2D_WPSCF":
             try:
-                _prog.WPSCF(self.para1, self.para2, float(self.para3), float(self.para4), float(self.para5), self.para6)
+                _ama.WPSCF(self.para1, self.para2, float(self.para3), float(self.para4), float(self.para5), self.para6)
             except Exception as e:
                 self.mysignal.emit(str(e))
         elif self.fonction == "3D_PSCF":
             try:
-                _prog.PSCF_3D(float(self.para1), float(self.para2), float(self.para3), float(self.para4), float(self.para5),
+                _ama.PSCF_3D(float(self.para1), float(self.para2), float(self.para3), float(self.para4), float(self.para5),
                           self.para6, float(self.para7))
             except Exception as e:
                 self.mysignal.emit(str(e))
         elif self.fonction == "3D_WPSCF":
             try:
-                _prog.WPSCF_3D(self.para1, self.para2, float(self.para3), float(self.para4), float(self.para5), self.para6)
+                _ama.WPSCF_3D(self.para1, self.para2, float(self.para3), float(self.para4), float(self.para5), self.para6)
             except Exception as e:
                 self.mysignal.emit(str(e))
         elif self.fonction == "clst_kmean":
             try:
-                _prog.clustering_kmean(int(self.para1), int(self.para2), int(self.para3))
+                _ama.clustering_kmean(int(self.para1), int(self.para2), int(self.para3))
             except Exception as e:
                 self.mysignal.emit(str(e))
         elif self.fonction == "correlation":
             try:
-                _prog.correlation(float(self.para1), float(self.para2), float(self.para3), float(self.para4), float(self.para5), str(self.para6))
+                _ama.correlation(float(self.para1), float(self.para2), float(self.para3), float(self.para4), float(self.para5), str(self.para6))
             except Exception as e:
                 self.mysignal.emit(str(e))
         self.stop()
@@ -279,8 +279,8 @@ class Create_subWindow(QtWidgets.QWidget):
         self.btn_groups.clicked.connect(lambda x: self.groups_roseplot())
         """self.btn_groups.clicked.connect(lambda x:self.fill_groups_names())
         self.btn_groups.clicked.connect(lambda x: self.groups_names(self.groups_str))"""
-        self.btn_addGroupsToData.clicked.connect(lambda x: _prog.add_groups_to_data_file(self.function, self.path_dir))
-        self.btn_removeGroupsFromData.clicked.connect(lambda x: _prog.remove_columns_data("Groups"))
+        self.btn_addGroupsToData.clicked.connect(lambda x: _ama.add_groups_to_data_file(self.function, self.path_dir))
+        self.btn_removeGroupsFromData.clicked.connect(lambda x: _ama.remove_columns_data("Groups"))
         self.btn_rosePlot.clicked.connect(lambda x: self.emit_signal_to_plot_roseplot())
         self.show()
     
@@ -295,7 +295,7 @@ class Create_subWindow(QtWidgets.QWidget):
             
     def fill_groups_names(self):
         try:
-            self.groups_str = _prog.fill_group_names(self.ledit_percentiles.text())
+            self.groups_str = _ama.fill_group_names(self.ledit_percentiles.text())
         except Exception as e:
             self.mysignal.emit(str(e))
 
@@ -548,7 +548,7 @@ class Create_subWindow(QtWidgets.QWidget):
             else:
                 self.clustnames=self.clustnames+f';{self.ledit_cluster_name[i].text()}'
         print(self.clustnames)
-        _prog.fill_clusters_names(self.clustnames)
+        _ama.fill_clusters_names(self.clustnames)
         self.figure_size.append(self.left_ledit.text())
         self.figure_size.append(self.right_ledit.text())
         self.figure_size.append(self.bottom_ledit.text())
@@ -679,7 +679,7 @@ class Worker(QtCore.QObject):
         #self.thread_started.start()
         #self.thread_started.mysignal.connect(self.append_text)
         if (self.function == "correlation"):
-            _prog.correlation(float(self.para1), float(self.para2), float(self.para3), float(self.para4), float(self.para5), str(self.para6))
+            _ama.correlation(float(self.para1), float(self.para2), float(self.para3), float(self.para4), float(self.para5), str(self.para6))
         self.finished.emit()
 
 
@@ -732,7 +732,7 @@ class Mainwindow(QtWidgets.QMainWindow):
         self.btn_next_plot.clicked.connect(
             lambda x: self.stackedWidget_plot.setCurrentIndex(self.stackedWidget_plot.currentIndex()+1))
         self.btn_back.clicked.connect(self.back_stacks)
-        self.btn_display_data.clicked.connect(lambda x: _prog.display_data())
+        self.btn_display_data.clicked.connect(lambda x: _ama.display_data())
         #================================ layers==========================
         self.layers = Create_subWindow(self.sBox_layers_pscf.value())
         self.layers.signal_reduce_cwt.connect(self.red_append_cwt)
@@ -757,7 +757,7 @@ class Mainwindow(QtWidgets.QMainWindow):
         self.btn_date_convert_begin.clicked.connect(lambda x: self.date_format("begin"))
         self.btn_date_convert_end.clicked.connect(lambda x: self.date_format("end"))
         self.btn_add_data_traj.clicked.connect(lambda x: self.add_data_to_trajectories())
-        """self.btn_add_data_traj.clicked.connect(lambda x: _prog.get_index_data_headers(self.cBox_data.currentText(), "concentration"))
+        """self.btn_add_data_traj.clicked.connect(lambda x: _ama.get_index_data_headers(self.cBox_data.currentText(), "concentration"))
         self.btn_add_data_traj.clicked.connect(lambda x: self.start_threading("ctr_trajs", self.ledit_missing_values.text()))"""
         self.btn_copy.clicked.connect(lambda x: self.start_threading("select_traj", self.ledit_min_sel.text(), self.ledit_max_sel.text(), self.ledit_copy_path.text()))
         # ========================== Tab_Trajectories_analysis ===========================
@@ -830,12 +830,12 @@ class Mainwindow(QtWidgets.QMainWindow):
         self.btn_choice_clusters_kmean.clicked.connect(lambda x: self.choice_nbr_clusters("kmean"))
         self.btn_plot_mean_clst_kmean.clicked.connect(lambda x: self.stacked_plot(1, "clustering_kmean"))
         self.btn_figure_kmean.clicked.connect(lambda x: self.figure_size("kmean"))
-        self.btn_add_clusters_data_kmean.clicked.connect(lambda x: _prog.add_clusters_to_data_file("kmean", self.dir_clustering))
+        self.btn_add_clusters_data_kmean.clicked.connect(lambda x: _ama.add_clusters_to_data_file("kmean", self.dir_clustering))
         self.btn_freq_clst_kmean.clicked.connect(lambda x: self.stacked_plot(1, "freq_kmean"))
         self.btn_roseplot_kmean.clicked.connect(lambda x: self.layers.roseplot("kmean", self.dir_clustering))
-        self.btn_remove_clusters_from_data_kmean.clicked.connect(lambda x: _prog.remove_columns_data("clusters"))
+        self.btn_remove_clusters_from_data_kmean.clicked.connect(lambda x: _ama.remove_columns_data("clusters"))
         self.nbr_clusters_kmean = 1
-        self.btn_clear_clst_kmean.clicked.connect(lambda x: _prog.clear_clusters())
+        self.btn_clear_clst_kmean.clicked.connect(lambda x: _ama.clear_clusters())
         self.btn_select_clustering.clicked.connect(lambda x: self.load_clusters())
         
         
@@ -846,15 +846,15 @@ class Mainwindow(QtWidgets.QMainWindow):
         self.btn_choice_clusters_tsv.clicked.connect(lambda x: self.choice_nbr_clusters("TSV"))
         self.btn_plot_mean_clst_tsv.clicked.connect(lambda x: self.stacked_plot(1, "clustering_TSV"))
         self.btn_figure_tsv.clicked.connect(lambda x: self.figure_size("TSV"))
-        self.btn_add_clusters_data_tsv.clicked.connect(lambda x: _prog.add_clusters_to_data_file("TSV", ""))
+        self.btn_add_clusters_data_tsv.clicked.connect(lambda x: _ama.add_clusters_to_data_file("TSV", ""))
         self.btn_freq_clst_tsv.clicked.connect(lambda x: self.stacked_plot(1, "freq_tsv"))
         self.btn_roseplot_tsv.clicked.connect(lambda x: self.layers.roseplot("TSV"))
-        self.btn_remove_clusters_from_data_tsv.clicked.connect(lambda x: _prog.remove_columns_data("clusters"))
+        self.btn_remove_clusters_from_data_tsv.clicked.connect(lambda x: _ama.remove_columns_data("clusters"))
         self.nbr_clusters_tsv = 1
-        self.btn_clear_clst_tsv.clicked.connect(lambda x: _prog.clear_clusters())
+        self.btn_clear_clst_tsv.clicked.connect(lambda x: _ama.clear_clusters())
         
         
-        """self.btn_load_clusters_kmean.clicked.connect(lambda x: _prog.open_clustering("kmean"))"""
+        """self.btn_load_clusters_kmean.clicked.connect(lambda x: _ama.open_clustering("kmean"))"""
         
         
         
@@ -901,17 +901,17 @@ class Mainwindow(QtWidgets.QMainWindow):
         if(self.cBox_clustering_results.currentText() == "Others clustering results..." or self.cBox_clustering_results.currentText() == "Add clustering results ..."):
             self.openTrajectoriesFolder("load_clusters_kmean")
             self.dir_clustering = self.cBox_clustering_results.currentText()
-            _prog.open_clustering("kmean", self.cBox_clustering_results.currentText())
+            _ama.open_clustering("kmean", self.cBox_clustering_results.currentText())
              
         else:
             try:
                 self.dir_clustering = self.cBox_clustering_results.currentText()
-                _prog.open_clustering("kmean", self.cBox_clustering_results.currentText())
+                _ama.open_clustering("kmean", self.cBox_clustering_results.currentText())
             except Exception as e:
                 self.append_text(str(e))
     
     def add_data_to_trajectories(self):
-        _prog.get_index_data_headers(self.cBox_data.currentText(), "concentration")
+        _ama.get_index_data_headers(self.cBox_data.currentText(), "concentration")
         self.start_threading("ctr_trajs", self.ledit_missing_values.text())
         
     def add_grids(self):
