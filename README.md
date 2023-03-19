@@ -20,7 +20,7 @@ To create sheared library:
 
 
 ## Installation 
-to install the requirements of Open-AMA, follow the steps bellow:
+to install the requirements of Open-AMA, follow the steps below:
 * Install c++ gcc g++ ...
 sudo apt install build-essential
 
