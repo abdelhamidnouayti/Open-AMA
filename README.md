@@ -51,7 +51,7 @@ sudo apt install build-essential
 * Create the shared library _ama.so
 	- sudo apt-get install python3.10-dev
 	-  swig -python -c++ ama.i
-	-  gcc -fPIC -c ama.cpp ama_wrap.cxx -I/usr/include/python3.9/
+	-  gcc -fPIC -c ama.cpp ama_wrap.cxx -I/usr/include/python3.10/
 	-  c++ -shared ama.o ama_wrap.o -o _ama.so
 
 * Generate traj_auto:
