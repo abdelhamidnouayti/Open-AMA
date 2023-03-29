@@ -18,6 +18,8 @@ To run you must execute the file openama.py in the Scripts folderusing the coman
 For Generating traj_auto:
 * Hysplit: linux version
 * install expect
+
+For downloading the meteorological data for the trajectory calculations
 * install wget
 
 To modify the source code and create a new sheared library (ama.so):
