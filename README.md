@@ -1,21 +1,24 @@
 # Open-AMA
-To run you must execute the file openama.py in the Scripts folder.
+To run you must execute the file openama.py in the Scripts folderusing the comand:
+* $ python openama.py
 ## Requirements
 * Install c++ gcc g++
 * install anaconda or miniconda
-* install PyQt5 and qt designer 
+* install PyQt5
 * python packages:
 	- numpy
 	- cartopy
 	- matplotlib
 	- pandas
+	- scipy
 
-Generate traj_auto:
+
+For Generating traj_auto:
 * Hysplit: linux version
 * install expect
 * install wget
 
-To create sheared library:
+To modify the source code and create a new sheared library (ama.so):
 * install swig
 
 
