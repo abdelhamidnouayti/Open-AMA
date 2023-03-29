@@ -1,8 +1,4 @@
 # Open-AMA
-To run you must execute the file openama.py in the Scripts folderusing the comand:
-```bash
-/Scripts$ python openama.py
-```
 ## Requirements
 * Install c++ gcc g++
 * install anaconda or miniconda
@@ -80,3 +76,10 @@ sudo apt install build-essential
 	pip install wget
 	```
 	
+## Run Open-AMA
+To run you must execute the file openama.py in the Scripts folderusing the comand:
+```bash
+conda activate ama
+cd Open-AMA/Scripts
+python openama.py
+```
