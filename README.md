@@ -1,4 +1,5 @@
 # Open-AMA
+Open-AMA is a linux software for air masses statistical analysis.
 ## Requirements
 * Install c++ gcc g++
 * install anaconda or miniconda
