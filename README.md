@@ -1,7 +1,7 @@
 # Open-AMA
 Open-AMA is a linux software for air masses statistical analysis.
 ## Requirements
-* Install c++ gcc g++
+* Install c++, gcc and  g++
 * install anaconda or miniconda
 * install PyQt5
 * python packages:
@@ -10,7 +10,6 @@ Open-AMA is a linux software for air masses statistical analysis.
 	- matplotlib
 	- pandas
 	- scipy
-
 
 For Generating traj_auto:
 * Hysplit: linux version
