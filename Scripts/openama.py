@@ -18,7 +18,6 @@ from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as Navigatio
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 import pandas as pd
-from scipy.interpolate import interp2d
 import numpy as np
 # time lib
 import datetime
