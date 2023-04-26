@@ -1,4 +1,4 @@
-%module prog
+%module ama
 %include "std_string.i"
 %{
 	#include <iostream>
